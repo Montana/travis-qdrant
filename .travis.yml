@@ -1,0 +1,15 @@
+os: linux
+dist: focal
+language: python
+python: '3.10'
+
+services:
+  - docker
+
+before_install:
+  - |
+    docker pull qdrant/qdrant
+    docker run -p 6333:6333 -p 6334:6334 -d qdrant/qdrant
+
+script:
+  - python qdrant.py
